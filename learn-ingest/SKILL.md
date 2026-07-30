@@ -1,7 +1,7 @@
 ---
 name: learn-ingest
 description: >
-  Guided intake pipeline for learning materials — transcripts, course lessons, Drive folders, PDFs.
+  Guided intake pipeline for learning materials - transcripts, course lessons, Drive folders, PDFs.
   ALWAYS trigger on `/ingest-material`. Also triggers when you paste a transcript, drop a file path,
   share a Google Drive link to course content, or say anything like "ingest this", "add this to my vault",
   "I just watched a course on X", "save this lesson", "process this transcript", or "what should I do
@@ -11,7 +11,7 @@ description: >
 
 # learn-ingest
 
-Guided intake for any learning material → vault → action pipeline.
+Guided intake for any learning material -> vault -> action pipeline.
 
 ---
 
@@ -27,13 +27,13 @@ Mining extracts:
 ~/Your Vault/Courses/<Community>/<Course Name>/Mining/<lesson>-<type>.md
 ```
 
-The **Community** layer is new — it's the platform or group the course came from (e.g. "YourCommunity", "Skool", "Standalone", "YouTube"). Always ask for it when the material is course content.
+The **Community** layer is new - it's the platform or group the course came from (e.g. "YourCommunity", "Skool", "Standalone", "YouTube"). Always ask for it when the material is course content.
 
 ---
 
 ## Intake Flow
 
-This skill uses a guided intake conversation. Work through these steps in order. Don't front-load all the questions — ask one thing at a time, wait for the answer, then proceed.
+This skill uses a guided intake conversation. Work through these steps in order. Don't front-load all the questions - ask one thing at a time, wait for the answer, then proceed.
 
 ### Step 0: Pre-flight Vault Scan (always runs first)
 
@@ -46,8 +46,8 @@ grep -ri "<keywords>" ~/Your\ Vault/Courses/ --include="*.md" -l 2>/dev/null
 Or use Python for a richer scan (see [H] Scan Vault below for the full implementation).
 
 **If matches found:** Report them before proceeding:
-> "Before we ingest — I found [N] related notes already in your vault:
-> - [Lesson Title] ([Course]) — [1-line summary or matching quote]
+> "Before we ingest - I found [N] related notes already in your vault:
+> - [Lesson Title] ([Course]) - [1-line summary or matching quote]
 > Want to review those first, pull one up, or proceed with new content?"
 
 **If no matches:** Skip silently and proceed to Step A.
@@ -85,7 +85,7 @@ If it's not course material (podcast, article, etc.), use a sensible default lik
 
 ### Step C: Source
 
-Ask for the source — or detect it from context:
+Ask for the source - or detect it from context:
 
 - **Pasted text**: use directly
 - **Local file path** (`.txt`, `.md`, `.vtt`, `.srt`): read the file
@@ -96,35 +96,35 @@ Ask for the source — or detect it from context:
 
 ### Step D: Action Selection (multi-select)
 
-After you have the source content in hand, ALWAYS present the full action menu exactly as shown below — including the plain-language description for each option. Never abbreviate it. The user wants the reminder of what each does every time.
+After you have the source content in hand, ALWAYS present the full action menu exactly as shown below - including the plain-language description for each option. Never abbreviate it. The user wants the reminder of what each does every time.
 
 Present it as checkboxes. Ask the user to reply with the letters they want (e.g. "A C E") or say "all":
 
 ---
 **What do you want to do with this?**
-*Check all that apply — reply with the letters, or say "all"*
+*Check all that apply - reply with the letters, or say "all"*
 
-- [ ] **A — Insights** — I read it and tell you what matters: key ideas, frameworks, and what it actually changes about how you'd work. Good for when you just watched something and want the "so what." Action items auto-routed to Google Tasks by confidence score.
+- [ ] **A - Insights** - I read it and tell you what matters: key ideas, frameworks, and what it actually changes about how you'd work. Good for when you just watched something and want the "so what." Action items auto-routed to Google Tasks by confidence score.
 
-- [ ] **B — Implement** — You want to build what's being taught. I pull out the actual steps and either kick off a GSD project or draft a phase for an existing one. Good for tutorials where there's something to deploy or configure.
+- [ ] **B - Implement** - You want to build what's being taught. I pull out the actual steps and either kick off a GSD project or draft a phase for an existing one. Good for tutorials where there's something to deploy or configure.
 
-- [ ] **C — Content mining** — I extract the raw material for creating content: frameworks you could teach, quotes worth reusing, and 5 specific post/article angles inspired by the lesson. Saved to your vault as a mining note.
+- [ ] **C - Content mining** - I extract the raw material for creating content: frameworks you could teach, quotes worth reusing, and 5 specific post/article angles inspired by the lesson. Saved to your vault as a mining note.
 
-- [ ] **D — Conversation mining** — Similar to content mining but focused on *how to talk about it*: opening hooks, punchy talking points, contrarian angles, and story frames. More useful for social posts, DMs, and sales conversations than long-form writing.
+- [ ] **D - Conversation mining** - Similar to content mining but focused on *how to talk about it*: opening hooks, punchy talking points, contrarian angles, and story frames. More useful for social posts, DMs, and sales conversations than long-form writing.
 
-- [ ] **E — Skill extraction** — I look at the lesson and ask: "Could this process become a Claude skill?" If yes, I write up what the skill would do, what it'd be called, and how complex it'd be — and offer to build it on the spot with `/skill-creator`.
+- [ ] **E - Skill extraction** - I look at the lesson and ask: "Could this process become a Claude skill?" If yes, I write up what the skill would do, what it'd be called, and how complex it'd be - and offer to build it on the spot with `/skill-creator`.
 
-- [ ] **F — Teach me** — Instead of a summary, we have a back-and-forth. I introduce one concept at a time, use examples from your actual work, and ask questions to check understanding. Good for dense material you want to actually retain, not just file away.
+- [ ] **F - Teach me** - Instead of a summary, we have a back-and-forth. I introduce one concept at a time, use examples from your actual work, and ask questions to check understanding. Good for dense material you want to actually retain, not just file away.
 
-- [ ] **G — Just archive** — Save it to the vault, nothing else. You want it there for reference but don't need to do anything with it right now.
+- [ ] **G - Just archive** - Save it to the vault, nothing else. You want it there for reference but don't need to do anything with it right now.
 
-- [ ] **H — Scan vault** — Don't ingest anything new. Just search what's already in the vault on a topic. I search all course notes, mining extracts, and key quotes across every community and course. Good for "what do I already know about X?" before starting a project or revisiting a topic.
+- [ ] **H - Scan vault** - Don't ingest anything new. Just search what's already in the vault on a topic. I search all course notes, mining extracts, and key quotes across every community and course. Good for "what do I already know about X?" before starting a project or revisiting a topic.
 
 ---
 
 If you say "all", run A through F in sequence (skip G since archiving is implicit when anything else is selected).
 
-**H is standalone** — if you select only H, skip the ingest flow entirely and go straight to the vault scan.
+**H is standalone** - if you select only H, skip the ingest flow entirely and go straight to the vault scan.
 
 ---
 
@@ -146,7 +146,7 @@ Before running any actions, always save to vault first.
 
 **For VTT/SRT**: strip all timestamp lines (`00:00:01.000 --> 00:00:05.000`) before processing.
 
-**For long transcripts (>2000 words):** Write a structured summary (300–500 words) + Key Quotes section. Don't dump the raw wall of text.
+**For long transcripts (>2000 words):** Write a structured summary (300-500 words) + Key Quotes section. Don't dump the raw wall of text.
 
 **For short transcripts (<2000 words):** Include full text under `## Transcript`.
 
@@ -198,7 +198,7 @@ Confirm: `"Saved to Courses/<Community>/<Course Name>/<lesson-slug>.md"`
 Read the transcript carefully and deliver a structured debrief:
 
 ```markdown
-## Key Insights — <Lesson Name>
+## Key Insights - <Lesson Name>
 
 ### The Big Idea
 <one-paragraph distillation of the core point>
@@ -210,10 +210,10 @@ Read the transcript carefully and deliver a structured debrief:
 <what challenges assumptions>
 
 ### What This Changes
-<practical implication — what should you do differently after this?>
+<practical implication - what should you do differently after this?>
 ```
 
-Then extract **action items** from the content and score each with a confidence value (0–100) based on:
+Then extract **action items** from the content and score each with a confidence value (0-100) based on:
 - **Specificity** (vague idea = low, concrete next step = high)
 - **Fit** (how directly it applies to your current projects)
 - **Effort** (quick win = higher, multi-week = lower unless critical)
@@ -222,13 +222,13 @@ Then extract **action items** from the content and score each with a confidence 
 
 | Score | Action |
 |---|---|
-| 80–100 | Auto-create in Google Tasks (`account: personal`) — do it, don't ask |
-| 60–79 | List under **Flagged for Review** in the vault note — user decides |
+| 80-100 | Auto-create in Google Tasks (`account: personal`) - do it, don't ask |
+| 60-79 | List under **Flagged for Review** in the vault note - user decides |
 | < 60 | Silently omit |
 
 **Google Tasks format for auto-routed items:**
 ```
-Title: [Action] — from [Lesson Name]
+Title: [Action] - from [Lesson Name]
 Notes: Confidence: [N]/100 | Course: [Course Name] ([Community]) | [vault path]
 ```
 
@@ -237,10 +237,10 @@ Notes: Confidence: [N]/100 | Course: [Course Name] ([Community]) | [vault path]
 ## Action Items
 
 ### Auto-routed to Google Tasks
-- ✓ [action] (confidence: N)
+- ✅ [action] (confidence: N)
 
-### Flagged for Review (60–79)
-- [ ] [action] (confidence: N) — [why flagged]
+### Flagged for Review (60-79)
+- [ ] [action] (confidence: N) - [why flagged]
 ```
 
 Use `mcp__google__tasks_add` with `account: personal` for all auto-routed items.
@@ -249,8 +249,8 @@ Use `mcp__google__tasks_add` with `account: personal` for all auto-routed items.
 
 Ask: "Is this a new project, or does it fit an existing one?"
 
-- **New** → "Run `/gsd-new-project` and use this as the requirements source." Extract a numbered implementation checklist from the transcript (actual steps, not paraphrases).
-- **Existing** → "Run `/gsd-add-phase` or `/gsd-insert-phase`." Write a concise phase description based on the content.
+- **New** -> "Run `/gsd-new-project` and use this as the requirements source." Extract a numbered implementation checklist from the transcript (actual steps, not paraphrases).
+- **Existing** -> "Run `/gsd-add-phase` or `/gsd-insert-phase`." Write a concise phase description based on the content.
 
 ### [C] Content Mining
 
@@ -258,7 +258,7 @@ Save to `Mining/<lesson-slug>-content-mining.md`:
 
 ```markdown
 ---
-title: Content Mining — <Lesson Name>
+title: Content Mining - <Lesson Name>
 source: <vault path>
 date: <today>
 tags: [mining, content, <course-slug>]
@@ -276,7 +276,7 @@ Save to `Mining/<lesson-slug>-convo-mining.md`:
 
 ```markdown
 ---
-title: Conversation Mining — <Lesson Name>
+title: Conversation Mining - <Lesson Name>
 source: <vault path>
 date: <today>
 tags: [mining, conversation, <course-slug>]
@@ -296,7 +296,7 @@ Analyze the content through the lens of: "Could this process, workflow, or frame
 Deliver:
 
 ```markdown
-## Skill Extraction Analysis — <Lesson Name>
+## Skill Extraction Analysis - <Lesson Name>
 
 ### Automation Potential
 <Is there a repeatable workflow here Claude could execute?>
@@ -308,17 +308,17 @@ Deliver:
 <Step-by-step description of the skill's behavior>
 
 ### Complexity Estimate
-<Simple (1 step) / Medium (3–5 steps) / Complex (multi-agent)>
+<Simple (1 step) / Medium (3-5 steps) / Complex (multi-agent)>
 
 ### Recommendation
-<Build it now / Add to backlog / Not worth automating — why>
+<Build it now / Add to backlog / Not worth automating - why>
 ```
 
 If the recommendation is "build it now", offer: "Want me to start building this with `/skill-creator`?"
 
 ### [F] Teach Me
 
-Socratic walkthrough — don't lecture:
+Socratic walkthrough - don't lecture:
 1. 2-sentence overview of what the lesson covers
 2. Present the first key concept with a concrete example from your actual work and projects
 3. Ask: "Does this connect to anything you're working on, or want to go deeper here?"
@@ -384,11 +384,11 @@ def scan_vault(query_terms):
     results.sort(key=lambda x: (-x["hits"], x["date"]))
     return results
 
-# Example — replace with actual query terms:
+# Example - replace with actual query terms:
 results = scan_vault(["your", "topic", "keywords"])
 for r in results:
     tag = "[mining]" if r["is_mining"] else "[lesson]"
-    print(f"{tag} {r['title']} — {r['course']} ({r['community']}, {r['date']})")
+    print(f"{tag} {r['title']} - {r['course']} ({r['community']}, {r['date']})")
     if r["snippet"]:
         print(f"  {r['snippet']}")
 ```
@@ -400,13 +400,13 @@ for r in results:
 Found N notes across X courses
 
 📚 Lessons:
-1. [Title] — [Course] ([Community], [date])
-   → [matching snippet]
-   → Path: [path]
+1. [Title] - [Course] ([Community], [date])
+   -> [matching snippet]
+   -> Path: [path]
 
 🗂️ Mining extracts:
-1. [Title] — [Course]
-   → [matching snippet]
+1. [Title] - [Course]
+   -> [matching snippet]
 
 Want me to pull up any of these, or proceed with new content?
 ```
@@ -420,9 +420,9 @@ Want me to pull up any of these, or proceed with new content?
 When you provide a Drive folder or file link:
 
 1. Use `mcp__google__drive_list` to list contents of the folder
-2. Present the file list: "Found X files — which would you like to ingest? Or say 'all'."
+2. Present the file list: "Found X files - which would you like to ingest? Or say 'all'."
 3. For each selected file, use `mcp__google__docs_read` (for Docs) or appropriate tool to fetch content
-4. If a file is a video/audio recording (MP4, MOV), note: "This is a video file — do you have a transcript for it, or should I skip it?"
+4. If a file is a video/audio recording (MP4, MOV), note: "This is a video file - do you have a transcript for it, or should I skip it?"
 5. PDFs and text files: read and process normally
 
 When reading from any Skool or online community Drive folder, look for:
@@ -435,6 +435,6 @@ When reading from any Skool or online community Drive folder, look for:
 ## Edge Cases
 
 - **Multiple lessons in one session**: offer to process each as a separate vault note, or merge into one
-- **Duplicate vault path**: warn — "A file already exists at that path — overwrite, rename, or skip?"
+- **Duplicate vault path**: warn - "A file already exists at that path - overwrite, rename, or skip?"
 - **No clear lesson name in content**: use filename or ask
 - **Drive file is a video with no transcript**: flag it and ask if you want to source a transcript separately
