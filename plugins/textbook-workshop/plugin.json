@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "textbook-workshop",
+  "version": "1.0.0",
+  "description": "Turn existing resources into a deeply taught textbook and a verified runnable learning companion.",
+  "keywords": ["textbook", "teaching", "curriculum", "worked examples", "runnable companion", "source synthesis"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Textbook Workshop",
+        "shortDescription": "Books with runnable labs",
+        "longDescription": "A reusable textbook-authoring workflow for existing PDFs, websites, notes, and code. Establishes learner prerequisites, audits sources, sequences concepts, writes substantial textbook chapters with worked reasoning, builds a runnable browser companion, assembles a single-volume book, and verifies the delivered package. Includes authoring references, templates, assembly and validation scripts, and an executable companion starter. This is an instruction-based plugin that works through the host agent's available tools; it does not add a remote service or subject-specific content library.",
+        "category": "Education & Research",
+        "capabilities": [],
+        "defaultPrompt": [
+          "Create a complete beginner-friendly textbook and runnable companion from these resources.",
+          "Expand my short lessons into a deeply taught textbook and keep the runnable companion aligned.",
+          "Review this textbook's prerequisites, teaching depth, source coverage, and runnable examples."
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "sources": [
+    {
+      "id": "source-01",
+      "title": "Record the actual resource title",
+      "location": "Record a public URL or sanitized user-supplied filename",
+      "version_or_date": "Record known version, or unknown",
+      "access": "partially-inspected",
+      "inspected_sections": [],
+      "topics": [],
+      "rights_notes": "Record facts about expression, code, and asset reuse separately",
+      "implementation_baseline": "Record API version or not applicable"
+    }
+  ],
+  "coverage": [
+    {"topic": "Replace with a concept", "source_ids": ["source-01"], "chapters": ["chapter-01"], "experiments": ["experiment-01"]}
+  ],
+  "limitations": []
+}

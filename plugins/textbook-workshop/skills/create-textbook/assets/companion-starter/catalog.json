@@ -1,0 +1,7 @@
+{
+  "title": "Companion starter",
+  "starter": true,
+  "experiments": [
+    {"id":"sample-interpolation","title":"Demo: interpolation","chapter":"chapter-01","description":"A working harness example. Replace this with the textbook's actual subject experiments.","module":"labs/interpolation.js"}
+  ]
+}

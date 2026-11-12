@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "title": "Replace with the authored textbook title",
+  "subtitle": "Replace with the specific learning journey",
+  "audience": "State the intended learner and only the knowledge already assumed",
+  "status": "draft",
+  "preface": "preface.md",
+  "output": "book.md",
+  "chapters": [
+    {
+      "id": "chapter-01",
+      "title": "Replace with the first conceptual problem",
+      "path": "chapters/01-foundations.md",
+      "part": "Foundations",
+      "status": "planned",
+      "minimum_prose_words": 2500,
+      "prerequisites": [],
+      "experiments": ["experiment-01"]
+    }
+  ],
+  "assets": [],
+  "source_listings": [],
+  "companion": {
+    "path": "companion",
+    "catalog": "companion/catalog.json",
+    "run": "node companion/server.mjs",
+    "starter": true
+  },
+  "provenance": "sources.json",
+  "verification": "verification.md"
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Textbook Workshop"
+  short_description: "Create textbooks with runnable companions"
+  default_prompt: "Create a complete textbook and runnable companion from my resources, teaching every prerequisite in a logical sequence."
+policy:
+  allow_implicit_invocation: true
