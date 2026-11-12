@@ -1,0 +1,4 @@
+interface:
+  default_prompt: Rebuild real analysis with me from first principles.
+  display_name: First Principles Math Coach
+  short_description: A rigorous, intuitive math coach that rebuilds mastery from firs

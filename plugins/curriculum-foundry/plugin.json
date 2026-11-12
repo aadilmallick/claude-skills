@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "author": {
+    "email": "aadil.mallick@unisonglobal.com",
+    "name": "Aadil Mallick"
+  },
+  "description": "Research and write complete first-principles curricula as portable Markdown lessons.",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "capabilities": [],
+        "category": "Education & Research",
+        "composerIcon": "./assets/icon.svg",
+        "defaultPrompt": "Create a complete, in-depth Markdown curriculum for this subject, from first principles.",
+        "developerName": "Aadil Mallick",
+        "displayName": "Curriculum Foundry",
+        "logo": "./assets/icon.svg",
+        "longDescription": "Turn a subject into a researched, structured curriculum with detailed first-principles Markdown lessons, practical examples, and quality checks. Includes the First Principles Coding Coach teaching instructions for programming topics.",
+        "shortDescription": "Complete learning curricula"
+      }
+    }
+  },
+  "name": "curriculum-foundry",
+  "version": "0.1.0"
+}

@@ -1,0 +1,5 @@
+interface:
+  default_prompt: Teach me JavaScript closures with practical examples.
+  display_name: First Principles Coding Coach
+  short_description: A structured, textbook-style coding coach focused on practical
+    u

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "author": {
+    "name": "Aadil Mallick"
+  },
+  "description": "A rigorous, intuitive math coach that rebuilds mastery from first principles through proofs and practice.",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "capabilities": [
+          "skills"
+        ],
+        "category": "Education & Research",
+        "composerIcon": "./assets/gpt-icon.png",
+        "defaultPrompt": [
+          "Rebuild real analysis with me from first principles.",
+          "Teach me group theory intuitively, then rigorously.",
+          "Give me a diagnostic to find gaps in my math foundations."
+        ],
+        "developerName": "Aadil Mallick",
+        "displayName": "First Principles Math Coach",
+        "logo": "./assets/gpt-icon.png",
+        "longDescription": "A rigorous, intuitive math coach that rebuilds mastery from first principles through proofs and practice.",
+        "shortDescription": "A rigorous, intuitive math coach that rebuilds mastery from first principles through proofs and practice."
+      }
+    }
+  },
+  "name": "gpt-a4f662e97cfcebcf669fad4e83ea19cd",
+  "version": "0.1.1+bundle.1494a0483e36eeb322c9d66bed08990c"
+}
